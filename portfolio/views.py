@@ -1,11 +1,13 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import PortfolioItem
+from .models import PortfolioItem, PhotoItem
 from .forms import CommentForm
 
 # Create your views here.
 def portfolio_list(request):
     items = PortfolioItem.objects.all()
     return render(request, 'portfolio/portfolio_list.html', {'items': items})
+
+
 
 
 def portfolio_detail(request, pk):
@@ -21,3 +23,12 @@ def portfolio_detail(request, pk):
     else:
         form = CommentForm()
     return render(request, 'portfolio/portfolio_detail.html', {'portfolio_item': portfolio_item, 'form': form})
+
+
+def photo_list(request):
+    items = PhotoItem.objects.all()
+    return render(request, 'portfolio/photo_list.html', {'items': items})
+
+
+def photo_detail(request, pk):
+    pass
